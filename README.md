@@ -2,7 +2,7 @@
 
 (Daun Bawang)
 
-![Foto](./depan-atas.jpg "Foto")
-![Foto](./bawah-atas.jpg "Foto")
-![Foto](./kanan-atas.jpg "Foto")
-![Foto](./kiri-atas.jpg "Foto")
+![Foto](./depan.jpg "Foto")
+![Foto](./bawah.jpg "Foto")
+![Foto](./kanan.jpg "Foto")
+![Foto](./kiri.jpg "Foto")
