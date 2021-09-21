@@ -1,4 +1,6 @@
-## Preview Foto
+## Preview Foto 
+
+(Daun Bawang)
 
 ![Foto](./depan-atas.jpg "Foto")
 ![Foto](./bawah-atas.jpg "Foto")
