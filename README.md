@@ -1,6 +1,12 @@
-## Preview Foto 
+## Axel Briano Suherik 05111940000137
 
-(Daun Bawang)
+tugas-1-axelbrians created by GitHub Classroom
+
+- Cari benda di sekitar Anda yang berawalan huruf D, I, atau N.
+- Letakkan benda tersebut di atas permukaan datar: meja, lantai, dsb.
+- Ambil foto benda tersebut dari empat sudut pandang yang berbeda: kanan atas, kiri atas, belakang atas, depan atas (sudut kemiringan bebas).
+
+benda: Daun Bawang
 
 ![Foto](./depan.jpg "Foto")
 ![Foto](./bawah.jpg "Foto")
