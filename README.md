@@ -6,9 +6,9 @@ tugas-1-axelbrians created by GitHub Classroom
 - Letakkan benda tersebut di atas permukaan datar: meja, lantai, dsb.
 - Ambil foto benda tersebut dari empat sudut pandang yang berbeda: kanan atas, kiri atas, belakang atas, depan atas (sudut kemiringan bebas).
 
-benda: Daun Bawang
+benda: Dinamo
 
-![Foto](./depan.jpg "Foto")
-![Foto](./bawah.jpg "Foto")
-![Foto](./kanan.jpg "Foto")
-![Foto](./kiri.jpg "Foto")
+![Foto](./depan.jpeg "Foto")
+![Foto](./belakang.jpeg "Foto")
+![Foto](./kanan.jpeg "Foto")
+![Foto](./kiri.jpeg "Foto")
