@@ -74,7 +74,6 @@ export default class Geometry {
             if(this.changeY) {
                 this._deltaY = -this._deltaY;
                 this.changeY = false;
-                console.log(this._deltaY);
             }
             if(this.changeZ) {
                 this._deltaZ = -this._deltaZ;

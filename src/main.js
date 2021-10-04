@@ -31,7 +31,7 @@ function main() {
 
     addColorRight();
 
-    geometryRight.setMovement(0.0, 0.0096, 0.0);
+    geometryRight.setMovement(0.0, 0.0137, 0.0);
 
     addFaceRight();
 
@@ -43,7 +43,7 @@ function update() {
 }
 
 function animate() {
-    // requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     update();
 }
 
@@ -1189,14 +1189,14 @@ function addColorRight() {
     geometryRight.addColor(new Color(color(253), color(169), color(8), 1));
     geometryRight.addColor(new Color(color(253), color(169), color(8), 1));
 
-    
 
-    let colors = [(Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45)];
-    console.log(`vertices count: ${geometryRight._vertices.length}`);
-    for(let i=geometryRight._colors.length; i<=geometryRight._vertices.length; i++) {
-        colors = [(Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45), 1];
-        geometryRight.addColor(new Color(colors[0], colors[1], colors[2], colors[3]));
-    }
+
+    // let colors = [(Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45)];
+    // console.log(`vertices count: ${geometryRight._vertices.length}`);
+    // for(let i=geometryRight._colors.length; i<=geometryRight._vertices.length; i++) {
+    //     colors = [(Math.random()/2 + 0.45), (Math.random()/2 + 0.45), (Math.random()/2 + 0.45), 1];
+    //     geometryRight.addColor(new Color(colors[0], colors[1], colors[2], colors[3]));
+    // }
 }
 
 function addFaceRight() {
