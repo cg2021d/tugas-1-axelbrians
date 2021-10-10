@@ -9,7 +9,6 @@ tugas-1-axelbrians created by GitHub Classroom
 
 #### Preview
 ![Foto](./preview-threejs.png "Foto")
-or just go trough to github pages
 
 
 ### Tugas 1 WEBGL
