@@ -62952,7 +62952,7 @@ const physicMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshPhysicalMaterial({
   color: 0x33DDFF
 });
 const standarmat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshStandardMaterial({
-  roughness: 1.0,
+  roughness: 0.5,
   metalness: 1.0,
   color: 0x33DDFF
 });

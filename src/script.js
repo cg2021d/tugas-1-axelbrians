@@ -38,7 +38,7 @@ const physicMat = new THREE.MeshPhysicalMaterial({
     color: 0x33DDFF
 });
 const standarmat = new THREE.MeshStandardMaterial({
-    roughness: 1.0,
+    roughness: 0.5,
     metalness: 1.0,
     color: 0x33DDFF
 });
