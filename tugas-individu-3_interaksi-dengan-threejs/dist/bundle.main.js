@@ -203,6 +203,25 @@ module.exports = function () {
 
 /***/ }),
 
+/***/ "./src/randomNextInt.js":
+/*!******************************!*\
+  !*** ./src/randomNextInt.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const randomInt = (from, until) => {
+  return from + Math.random() * (until - from);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (randomInt);
+
+/***/ }),
+
 /***/ "./node_modules/dat.gui/build/dat.gui.module.js":
 /*!******************************************************!*\
   !*** ./node_modules/dat.gui/build/dat.gui.module.js ***!
@@ -62914,10 +62933,10 @@ var __webpack_exports__ = {};
   \***********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
-/* harmony import */ var three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/jsm/controls/OrbitControls.js */ "./node_modules/three/examples/jsm/controls/OrbitControls.js");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* harmony import */ var three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! three/examples/jsm/controls/OrbitControls.js */ "./node_modules/three/examples/jsm/controls/OrbitControls.js");
 /* harmony import */ var dat_gui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dat.gui */ "./node_modules/dat.gui/build/dat.gui.module.js");
-
+/* harmony import */ var _randomNextInt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./randomNextInt */ "./src/randomNextInt.js");
 
 
 
@@ -62926,150 +62945,61 @@ __webpack_require__.r(__webpack_exports__);
 
 const canvas = document.querySelector('canvas.webgl'); // Scene
 
-const scene = new three__WEBPACK_IMPORTED_MODULE_2__.Scene(); // Grid helper
+const scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene();
+scene.background = new three__WEBPACK_IMPORTED_MODULE_3__.Color(0xd2d2d2); // Grid helper
 // const gridHelper = new THREE.GridHelper( 1000, 1000 );
 // scene.add( gridHelper );
 // Geomtry
+// const boxGeo = new THREE.BoxGeometry(3, 3, 3);
+// Materials
 
-const sphereGeo = new three__WEBPACK_IMPORTED_MODULE_2__.SphereGeometry(0.5, 32, 16);
-const boxGeo = new three__WEBPACK_IMPORTED_MODULE_2__.BoxGeometry(3, 3, 3);
-const ballGeo = new three__WEBPACK_IMPORTED_MODULE_2__.TorusGeometry(2, 1, 16, 100); // Materials
-
-const normalMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshNormalMaterial();
-const basicMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshBasicMaterial({
+const normalMat = new three__WEBPACK_IMPORTED_MODULE_3__.MeshNormalMaterial();
+const basicMat = new three__WEBPACK_IMPORTED_MODULE_3__.MeshBasicMaterial({
   color: 0x33DDFF
-});
-const whiteBasicMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshBasicMaterial({
-  color: 0xFFFFFF
-});
-const phongMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshPhongMaterial({
-  color: 0x33DDFF,
-  shininess: 50.0,
-  flatShading: true
-});
-const physicMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshPhysicalMaterial({
-  reflectivity: 1.0,
-  color: 0x33DDFF
-});
-const standarmat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshStandardMaterial({
-  roughness: 0.5,
-  metalness: 1.0,
-  color: 0x33DDFF
-});
-const toonMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshToonMaterial({
-  color: 0x33DDFF
-});
-const depthMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshDepthMaterial({
-  color: 0x33DDFF
-});
-const lambertMat = new three__WEBPACK_IMPORTED_MODULE_2__.MeshLambertMaterial({
-  color: 0x33DDFF
-}); // Mesh
+}); // const standarMat = new THREE.MeshStandardMaterial({
+//     roughness: 1.0,
+//     metalness: 1.0,
+//     color: 0x33DDFF
+// });
+// let standarMaterials = [];
 
-const sphereNormal = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(sphereGeo, whiteBasicMat);
-const boxNormal = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, normalMat);
-const boxBasic = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, basicMat);
-const boxPhong = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, phongMat);
-const boxPhysic = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, physicMat);
-const boxStandar = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, standarmat);
-const boxToon = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, toonMat);
-const boxDepth = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, depthMat);
-const boxLambert = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(ballGeo, lambertMat); // sphereNormal.castShadow = true;
+const colorList = [0xFE2712, 0xFABC02, 0xFEFE33, 0x66B032, 0x0391CE, 0x8601AF]; // Mesh
 
-boxNormal.castShadow = true;
-boxBasic.castShadow = true;
-boxPhong.castShadow = true;
-boxPhysic.castShadow = true;
-boxStandar.castShadow = true;
-boxToon.castShadow = true;
-boxDepth.castShadow = true;
-boxLambert.castShadow = true;
-sphereNormal.position.set(0, 0, 0);
-boxNormal.position.set(-12, 8, 0);
-boxBasic.position.set(0, 8, 0);
-boxPhong.position.set(12, 8, 0);
-boxPhysic.position.set(-12, 0, 0);
-boxStandar.position.set(12, 0, 0);
-boxToon.position.set(-12, -8, 0);
-boxDepth.position.set(0, -8, 0);
-boxLambert.position.set(12, -8, 0); // Add mesh to canvass
+const generateBox = () => {
+  const matColor = colorList[Math.floor((0,_randomNextInt__WEBPACK_IMPORTED_MODULE_2__.default)(0, 6))]; // console.log(`color ${colorList[Math.floor(randomInt(0, 6))]}`);
 
-scene.add(sphereNormal, boxNormal, boxBasic, boxPhong, boxPhysic, boxStandar, boxToon, boxDepth, boxLambert); // Cube background
+  const standarMat = new three__WEBPACK_IMPORTED_MODULE_3__.MeshStandardMaterial({
+    roughness: 1.0,
+    metalness: 1.0,
+    color: matColor
+  });
+  const boxGeo = new three__WEBPACK_IMPORTED_MODULE_3__.BoxGeometry(3, 3, 3);
+  const boxMesh = new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(boxGeo, standarMat);
+  boxMesh.position.set((0,_randomNextInt__WEBPACK_IMPORTED_MODULE_2__.default)(-20, 20), (0,_randomNextInt__WEBPACK_IMPORTED_MODULE_2__.default)(-20, 20), (0,_randomNextInt__WEBPACK_IMPORTED_MODULE_2__.default)(-20, 20));
+  scene.add(boxMesh);
+};
 
-const geometry = new three__WEBPACK_IMPORTED_MODULE_2__.PlaneGeometry(50, 50);
-const material = new three__WEBPACK_IMPORTED_MODULE_2__.MeshStandardMaterial({
-  color: 0x343434,
-  side: three__WEBPACK_IMPORTED_MODULE_2__.DoubleSide
-});
-const planes = [];
+for (let i = 0; i < 30; i++) {
+  generateBox();
+} // Scoring
 
-for (let i = 0; i < 5; i++) {
-  let plane = new three__WEBPACK_IMPORTED_MODULE_2__.Mesh(geometry, material);
-  plane.receiveShadow = true;
-  planes.push(plane);
-}
 
-planes[0].rotation.set(0, 1.5708, 0);
-planes[0].position.set(20, 0, 0);
-planes[1].rotation.set(0, 1.5708, 0);
-planes[1].position.set(-20, 0, 0);
-planes[2].position.set(0, 0, -20);
-planes[3].rotation.set(1.5708, 0, 0);
-planes[3].position.set(0, 20, 0);
-planes[4].rotation.set(1.5708, 0, 0);
-planes[4].position.set(0, -20, 0);
-scene.add(planes[0], planes[1], planes[2], planes[3], planes[4]); // Lights option
-// Point Light
+const currentScoreElement = document.getElementById("current-score");
+const hightScoreElement = document.getElementById("high-score");
+const rightPair = 50;
+const wrongPair = -20;
+let currentScore = 0;
+let highScore = 0; // Point Light
 
-const pointLight = new three__WEBPACK_IMPORTED_MODULE_2__.PointLight(0xffffff, 1, 100);
+const pointLight = new three__WEBPACK_IMPORTED_MODULE_3__.PointLight(0xffffff, 2, 500);
 pointLight.castShadow = true;
-pointLight.position.set(0, 0, 0);
-scene.add(pointLight); // Spot Light
-
-const spotLight = new three__WEBPACK_IMPORTED_MODULE_2__.SpotLight(0xffffff, 1, 0, Math.PI / 8);
-spotLight.position.set(0, 0, 50);
-spotLight.castShadow = true;
-spotLight.shadow.mapSize.width = 1024;
-spotLight.shadow.mapSize.height = 1024;
-spotLight.shadow.camera.near = 0.5;
-spotLight.shadow.camera.far = 500;
-spotLight.shadow.camera.fov = 30;
-spotLight.shadow.focus = 1;
-spotLight.visible = false;
-scene.add(spotLight);
-const spotLightHelper = new three__WEBPACK_IMPORTED_MODULE_2__.SpotLightHelper(spotLight);
-spotLightHelper.visible = false;
-scene.add(spotLightHelper);
-const ambientLight = new three__WEBPACK_IMPORTED_MODULE_2__.AmbientLight(0xffffff); // soft white light
-
-ambientLight.visible = false;
-scene.add(ambientLight);
-const directionalLight = new three__WEBPACK_IMPORTED_MODULE_2__.DirectionalLight(0xffffff, 0.5);
-directionalLight.visible = false;
-scene.add(directionalLight);
-const hemiLight = new three__WEBPACK_IMPORTED_MODULE_2__.HemisphereLight(0xffffbb, 0x080820, 1);
-hemiLight.visible = false;
-scene.add(hemiLight); // Debug
+pointLight.position.set(0, 50, 30);
+scene.add(pointLight); // Debug
 
 const gui = new dat_gui__WEBPACK_IMPORTED_MODULE_1__.GUI();
-gui.add(pointLight, 'visible').onChange(setValue).name('PointLight');
-gui.add(spotLight, 'visible').onChange(setValue).name('SpotLight');
-gui.add(spotLightHelper, 'visible').onChange(setValue).name('SpotLightHelper');
-gui.add(ambientLight, 'visible').onChange(setValue).name('AmbientLight');
-gui.add(directionalLight, 'visible').onChange(setValue).name('DirectionalLight');
-gui.add(hemiLight, 'visible').onChange(setValue).name('HemiLight');
-
-function setValue() {
-  if (pointLight.visible === true) {
-    sphereNormal.visible = true;
-  } else {
-    sphereNormal.visible = false;
-  }
-}
 /**
  * Sizes
  */
-
 
 const sizes = {
   width: window.innerWidth,
@@ -63091,45 +63021,131 @@ window.addEventListener('resize', () => {
  */
 // Base camera
 
-const camera = new three__WEBPACK_IMPORTED_MODULE_2__.PerspectiveCamera(70, sizes.width / sizes.height, 0.1, 1000);
-camera.position.set(0, 0, 30);
+const camera = new three__WEBPACK_IMPORTED_MODULE_3__.PerspectiveCamera(70, sizes.width / sizes.height, 0.1, 1000);
+camera.position.set(0, 10, 50);
 scene.add(camera); // Controls
 
-const controls = new three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_3__.OrbitControls(camera, canvas);
+const controls = new three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_4__.OrbitControls(camera, canvas);
 controls.enableDamping = true;
+/**
+ * Function
+ */
+
+let selectedObject = [];
+let originalColors = [];
+
+const disposeObject = () => {
+  let first = selectedObject[0].material.color.getHex();
+  let second = selectedObject[1].material.color.getHex();
+
+  if (first === second) {
+    selectedObject.forEach(object => {
+      object.geometry.dispose();
+      object.material.dispose();
+      scene.remove(object);
+      renderer.renderLists.dispose();
+    });
+    currentScore += rightPair;
+  } else {
+    currentScore += wrongPair;
+  }
+
+  currentScoreElement.innerHTML = currentScore;
+  originalColors = [];
+  selectedObject = [];
+};
+/**
+ * Raycast
+ */
+
+
+const rayCast = new three__WEBPACK_IMPORTED_MODULE_3__.Raycaster();
+const mouse = new three__WEBPACK_IMPORTED_MODULE_3__.Vector2();
+mouse.setX(-1);
+mouse.setY(-1);
+
+const onMouseClick = e => {
+  mouse.x = e.clientX / window.innerWidth * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  rayCast.setFromCamera(mouse, camera);
+  let intersects = rayCast.intersectObjects(scene.children, false);
+
+  if (intersects[0]) {
+    let firstObject = intersects[0].object;
+
+    if (selectedObject.length > 0) {
+      if (firstObject.uuid === selectedObject[0].uuid) {
+        firstObject.material.emissive.setHex(0x000000);
+        selectedObject = [];
+        originalColors = [];
+        return;
+      }
+    }
+
+    selectedObject.push(firstObject);
+    originalColors.push(firstObject.material.color.getHex());
+
+    if (selectedObject.length > 1) {
+      disposeObject();
+    } // disposeObject();
+
+  }
+};
+
+document.addEventListener("click", onMouseClick);
 /**
  * Renderer
  */
 
-const renderer = new three__WEBPACK_IMPORTED_MODULE_2__.WebGLRenderer({
+const renderer = new three__WEBPACK_IMPORTED_MODULE_3__.WebGLRenderer({
   canvas: canvas
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_2__.PCFSoftShadowMap;
+renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_3__.PCFSoftShadowMap;
 /**
  * Animate
  */
 
-const clock = new three__WEBPACK_IMPORTED_MODULE_2__.Clock();
-let direction = "right";
-const speed = 0.1;
+const clock = new three__WEBPACK_IMPORTED_MODULE_3__.Clock();
+let treeshold = 0;
+let speed = 0.002;
+const baseSpeed = 0.002;
 
 const tick = () => {
+  if (scene.children.length >= 40) {
+    treeshold = 0;
+    speed = baseSpeed;
+
+    if (currentScore > highScore) {
+      highScore = currentScore;
+      hightScoreElement.innerHTML = highScore;
+    }
+
+    currentScore = 0;
+    currentScoreElement.innerHTML = currentScore;
+  } else {
+    treeshold += speed;
+  }
+
+  if (treeshold > 1) {
+    generateBox();
+    treeshold = 0;
+    speed += 0.002;
+    console.log(`new box generated, speed increased to ${speed}`);
+  } // console.log(`treeshold ${treeshold}`);
+
+
   const elapsedTime = clock.getElapsedTime();
-  sphereNormal.rotation.set(elapsedTime, elapsedTime, elapsedTime);
-  boxNormal.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxBasic.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxPhong.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxPhysic.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxStandar.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxToon.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxDepth.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12);
-  boxLambert.rotation.set(elapsedTime * 0.2, elapsedTime * 0.09, elapsedTime * 0.12); // Update objects
+
+  if (selectedObject.length > 0) {
+    selectedObject[0].material.emissive.setHex(elapsedTime % 0.5 >= 0.25 ? originalColors[0] : 0x000000);
+  } // Update objects
   // Update Orbital Controls
   // controls.update()
   // Render
+
 
   renderer.render(scene, camera); // Call tick again on the next frame
 
@@ -63142,10 +63158,10 @@ tick();
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!*********************************************************************************!*\
-  !*** ./node_modules/webpack-dev-server/client/index.js?http://192.168.0.1:8080 ***!
-  \*********************************************************************************/
-var __resourceQuery = "?http://192.168.0.1:8080";
+/*!***********************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/index.js?http://192.168.8.100:8080 ***!
+  \***********************************************************************************/
+var __resourceQuery = "?http://192.168.8.100:8080";
 
 /* global __resourceQuery WorkerGlobalScope self */
 
