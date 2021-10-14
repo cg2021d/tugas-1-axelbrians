@@ -2,6 +2,6 @@
 ## Repository tugas individu Grafika Komputer - D 2021
 
 
-1. [Tugas 1 - Menggambar dengan WebGL](https://github.com/cg2021d/tugas-1-yanzkosim/tree/main/TugasIndividu1%20-%20Menggambar%20dengan%20WebGL)
-2. [Tugas 2 - Mencoba Three.js](https://github.com/cg2021d/tugas-1-yanzkosim/tree/main/TugasIndividu2%20-%20Three.js)
-3. [Tugas 3 - Membuat Simple Object Matching Game](https://github.com/cg2021d/tugas-1-yanzkosim/tree/main/TugasIndividu3)
+1. [Tugas 1 - Menggambar dengan WebGL](https://github.com/cg2021d/tugas-1-axelbrians/tree/master/tugas-individu-1_menggambar-dengan-webgl)
+2. [Tugas 2 - Mencoba Three.js](https://github.com/cg2021d/tugas-1-axelbrians/tree/master/tugas-individu-2_basic-threejs)
+3. [Tugas 3 - Membuat Simple Object Matching Game](https://github.com/cg2021d/tugas-1-axelbrians/tree/master/tugas-individu-3_interaksi-dengan-threejs)

@@ -5,7 +5,7 @@
 
 benda: Dinamo
 
-![Foto](./menggambar-dengan-webgl/depan.jpeg "Foto")
-![Foto](./menggambar-dengan-webgl/belakang.jpeg "Foto")
-![Foto](./menggambar-dengan-webgl/kanan.jpeg "Foto")
-![Foto](./menggambar-dengan-webgl/kiri.jpeg "Foto")
+![Foto](./depan.jpeg "Foto")
+![Foto](./belakang.jpeg "Foto")
+![Foto](./kanan.jpeg "Foto")
+![Foto](./kiri.jpeg "Foto")
