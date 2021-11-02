@@ -1,0 +1,36 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    height: 100vh;
+    font-family: 'Poppins';
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.leaderboard {
+    position: absolute;
+    position: 0 0;
+    font-size: 1.5rem;
+}
+
+.crosshair {
+    font-size: 2rem;;
+    font-weight: bold;
+    color: rgb(88, 236, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
